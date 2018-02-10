@@ -1,0 +1,17 @@
+#!/bin/bash
+MASTER=spark://captain:7077
+JAR_FILE=/home/hadoop/code/spark/MySpark/build/libs/MySpark.jar
+
+# Remove Previous Output
+hdfs dfs -rm -r /outputs/WordCount
+rm -f ./part-00000
+rm -f ./part-00001
+
+
+# Submit
+spark-submit --class com.rueggerllc.spark.apps.WordCount --master $MASTER $JAR_FILE
+
+
+# Get Output
+hdfs dfs -get /outputs/WordCount/part-00000 ./part-00000
+hdfs dfs -get /outputs/WordCount/part-00000 ./part-00001
