@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MASTER=local[2]
-JAR_FILE=/home/hadoop/code/spark/MySpark/build/libs/MySpark.jar
+MASTER=local[*]
+JAR_FILE=/home/hadoop/code/spark/SparkStreaming/build/libs/SparkStreaming.jar
 HOST=captain
 PORT=9999
 
@@ -11,4 +11,4 @@ PORT=9999
 # -k 	keep open
 
 # Submit
-spark-submit --class com.rueggerllc.spark.apps.StreamingWordCount --master $MASTER $JAR_FILE $HOST $PORT
+spark-submit --class com.rueggerllc.spark.streaming.StreamingWordCount --master $MASTER $JAR_FILE $HOST $PORT
